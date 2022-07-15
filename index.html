@@ -1,25 +1,90 @@
-<html>
-  <head>
-    <style>
-      body{
-        background: #4776E6;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #8E54E9, #4776E6);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #8E54E9, #4776E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      }
-    </style>
-  <body>
-    <header class="w3-display-container w3-content w3-center" style="max-width:1500px">
-      <img class="w3-image" src="https://github.com/Sachin-v3rma/Sachin-v3rma.github.io/raw/main/img/bg.png" alt="Me" width="1500" height="600">
-      <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
-        <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge">SACHIN VERMA</h1>
-        <h3 class="w3-hide-medium w3-hide-small">HACKER</h3>
+<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        
+            <title>Django Blog</title>
+        
+        
+        <!-- Google Font Icon Library and Bootstrap 5-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <nav class="navbar navbar-expand-md navbar-dark bg-navbar fixed-top">
+              <div class="container">
+                <a class="navbar-brand mr-4" href="/">Django Blog</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                  <div class="navbar-nav me-auto">
+                    <a class="nav-item nav-link" href="/">Home</a>
+                    <a class="nav-item nav-link" href="/about/">About</a>
+                  </div>
+                  <!-- Navbar Right Side -->
+                  <div class="navbar-nav">
+                    
+                      <a class="nav-item nav-link" href="/post/new/">New Post</a>
+                      <a class="nav-item nav-link" href="/profile/">Profile</a>
+                      <a class="nav-item nav-link" href="/logout/">Logout</a>
+                    
+                  </div>
+                </div>
+              </div>
+            </nav>
+        </header>
+        
+        <main role="main" class="container p-2">
+          
+            
+     
+            
+          
+        </main>
+          
+  <section class="vh-40 profile-section">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-md-9 col-lg-7 col-xl-5">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-4">
+              <div class="d-flex text-black flex-column">
+                <div class="flex-shrink-0 mx-auto mb-2">
+                  
+                    <img class="img-fluid profile-pic" src="/media/profile_pics/s-logo.jpg" alt="Profile Picture">
+                  
+                </div>
+
+                <div class="flex-grow-1 ms-3">
+                  <h5 class="display-6 text-center">Test1</h5>
+                  <p class="mb-3 text-center"><span class="material-icons md-dark align">mail</span> test1@blog.com</p>
+                  
+                  <div class="d-flex justify-content-start rounded-3 p-2 mb-2 about-bg">
+                    <div>
+                      <p class="small text-muted mb-0">Hey I am a Test User. I am from nowhere and will get deleted. 😭😫😫</p>
+                    </div>
+                  </div>
+                  
+                  <div class="d-flex pt-1">
+                    <button type="button" class="btn btn-outline-primary flex-grow-1" onclick="window.location.href='/profile/update/';">Edit Profile</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-  
-      <!-- Navbar (placed at the bottom of the header image) -->
-      <div class="w3-bar w3-light-grey w3-round w3-display-bottommiddle w3-hide-small" style="bottom:1px">
-        <a href="#" class="w3-bar-item w3-button">Home</a>
-        <a href="https://twitter.com/vm_sachin" class="w3-bar-item w3-button">Contact</a>
-      </div>
-    </header>
-  </body>
-</html>
+    </div>
+  </section>
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    
+
+</body></html>
