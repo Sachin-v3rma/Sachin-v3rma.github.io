@@ -15,7 +15,7 @@ permalink: /index.html
 
 <!-- Header -->
 <header class="w3-display-container w3-content w3-center" style="max-width:1500px">
-  <img class="w3-image" src="img/bg.jpg" alt="Me" width="1500" height="600">
+  <img class="w3-image" src="https://github.com/Sachin-v3rma/Sachin-v3rma.github.io/img/bg.jpg" alt="Me" width="1500" height="600">
   <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
     <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge">SACHIN VERMA</h1>
     <h3 class="w3-hide-medium w3-hide-small">HACKER</h3>
