@@ -3,17 +3,6 @@ layout: page
 permalink: /index.html
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Sachin Verma</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-</head>
-<body>
-
-<!-- Header -->
 <header class="w3-display-container w3-content w3-center" style="max-width:1500px">
   <img class="w3-image" src="https://github.com/Sachin-v3rma/Sachin-v3rma.github.io/raw/main/img/bg.png" alt="Me" width="1500" height="600">
   <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
@@ -27,5 +16,3 @@ permalink: /index.html
     <a href="https://twitter.com/vm_sachin" class="w3-bar-item w3-button">Contact</a>
   </div>
 </header>
-</body>
-</html>
