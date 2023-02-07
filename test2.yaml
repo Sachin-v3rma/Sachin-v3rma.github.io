@@ -27,3 +27,4 @@ paths:
         - accounts
       operationId: findAccounts
       summary: Finds all accounts
+      
