@@ -1,0 +1,2590 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "DOM XSS POC <a href=\"javascript:alert();\">Click Me</a>",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/apps/{appId}": {
+      "get": {
+        "tags": [
+          "Application"
+        ],
+        "summary": "Retrieves application information [Admin]",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ApplicationReadDTO"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Application"
+        ],
+        "summary": "Create application [Admin]",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Application object to be created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ApplicationCreateDTO"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ApplicationReadDTO"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Application"
+        ],
+        "summary": "Fully update application [Admin]",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Application object to be updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ApplicationUpdateDTO"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Application"
+        ],
+        "summary": "Partially update application [Admin]",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "<a href=\"http://jsonpatch.com/\" target=\"_blank\">JSON Patch</a> is a format for describing changes to a JSON document",
+            "required": true,
+            "schema": {
+              "description": "<a href=\"http://jsonpatch.com/\" target=\"_blank\">JSON Patch</a> is a format for describing changes to a JSON document",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Operation"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{appId}/clear-cache": {
+      "post": {
+        "tags": [
+          "Application"
+        ],
+        "summary": "Force application cache refresh [Admin]",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{appId}/compression": {
+      "post": {
+        "tags": [
+          "Compression"
+        ],
+        "summary": "Retrieve a URI to download multiple files bundled as a zip [Read]",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "locationHint",
+            "description": "Preferred location where the download will take place. Available locations: MDC, PDC, HDC, SFO and External.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "duration",
+            "description": "Valid duration of the temporary authorization (in seconds), default value is 4hours",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "downloadName",
+            "description": "Friendly name on saving the zip file",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "compressionLevel",
+            "description": "Indicates whether to emphasize speed or compression effectiveness"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Schema defining ZIP content (<a href=\"https://dds.gitlabpages.ubisoft.org/DAM/dam-docs/storage-service/4.%20Other/compression/creating-zip-files/\" target=\"_blank\">details</a>)",
+            "required": true,
+            "schema": {
+              "description": "Schema defining ZIP content (<a href=\"https://dds.gitlabpages.ubisoft.org/DAM/dam-docs/storage-service/4.%20Other/compression/creating-zip-files/\" target=\"_blank\">details</a>)",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ZipRequestItemDTO"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{appId}/files": {
+      "get": {
+        "tags": [
+          "File"
+        ],
+        "summary": "Retrieves a paginated list of file metadata using OData [Read]",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "select",
+            "description": "Limit number of returned fields; e.g. name, metadata",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "description": "OData like filter syntax; <a href=\"https://gitlab-ncsa.ubisoft.org/UCode/REST-API-Guidelines/blob/master/appendix/full-list-of-filtering-supported-operations.md\" target=\"_blank\">more details</a>",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "skip",
+            "description": "Sets the number of records to skip before it retrieves records in a collection (OData).",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "top",
+            "description": "Determines the maximum number of records to return (OData)",
+            "type": "integer",
+            "format": "int32",
+            "default": 10
+          },
+          {
+            "in": "query",
+            "name": "orderby",
+            "description": "Determines what values are used to order a collection of records (OData).",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "search",
+            "description": "Full text search",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "count",
+            "description": "Includes the X-Total-Count header in the response.",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "expandUrls",
+            "description": "Expand urls property in return: GET - for download urls; PUT - for upload urls; null - by default, no expanding.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "locationHint",
+            "description": "(used with <b>expandUrls</b>) Preferred location of storage. Available locations: MDC, PDC, HDC, SFO and External.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "duration",
+            "description": "(used with <b>expandUrls</b>) Overrides the default expiry time(1 day). Unit:second",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "segmentSize",
+            "description": "(used with <b>expandUrls</b>) The max size of each segment, it is 1073741824 (1GB) by default. It should be 5242880 (5MB) at least and \r\nless than 2147483648 (2GB). The total number of segments should be less than 1000. Set the segment size bigger for large file.",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "inline",
+            "description": "(used with <b>expandUrls</b>) Determine inline display on browser",
+            "type": "boolean"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FileMetadataReadDTO"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{appId}/files/{fileId}": {
+      "get": {
+        "tags": [
+          "File"
+        ],
+        "summary": "Get file metadata [Read]",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "fileId",
+            "description": "UUID of file",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "fileName",
+            "description": "(used with <b>expandUrls</b>) Overrides the default file name",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "expandUrls",
+            "description": "Expand urls property in return: GET - for download urls; PUT - for upload urls; null - by default, no expanding.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "locationHint",
+            "description": "(used with <b>expandUrls</b>) Preferred location of storage. Available locations: MDC, PDC, HDC, SFO and External.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "duration",
+            "description": "(used with <b>expandUrls</b>) Overrides the default expiry time(1 day). Unit:second",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "segmentSize",
+            "description": "(used with <b>expandUrls</b>) The max size of each segment, it is 1073741824 (1GB) by default. It should be 5242880 (5MB) at least and \r\nless than 2147483648 (2GB). The total number of segments should be less than 1000. Set the segment size bigger for large file.",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "inline",
+            "description": "(used with <b>expandUrls</b>) Determine inline display on browser",
+            "type": "boolean"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/FileMetadataReadDTO"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "File"
+        ],
+        "summary": "Creates file metadata [Write]",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "fileId",
+            "description": "UUID of file",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "expandUrls",
+            "description": "Expand urls property in return: GET - for download urls; PUT - for upload urls; null - by default, no expanding.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "locationHint",
+            "description": "(used with <b>expandUrls</b>) Preferred location of storage. Available locations: MDC, PDC, HDC, SFO and External.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "duration",
+            "description": "(used with <b>expandUrls</b>) Overrides the default expiry time(1 day). Unit:second",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "segmentSize",
+            "description": "(used with <b>expandUrls</b>) The max size of each segment, it is 1073741824 (1GB) by default. It should be 5242880 (5MB) at least and \r\nless than 2147483648 (2GB). The total number of segments should be less than 1000. Set the segment size bigger for large file.",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "inline",
+            "description": "(used with <b>expandUrls</b>) Determine inline display on browser",
+            "type": "boolean"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "File metadata object to be created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FileMetadataCreateDTO"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/FileMetadataReadDTO"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "File"
+        ],
+        "summary": "Updates file metadata [Write]",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "fileId",
+            "description": "UUID of file",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "File metadata object to be updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FileMetadataUpdateDTO"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "File"
+        ],
+        "summary": "Patch update file's metadata [Write]",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "fileId",
+            "description": "UUID of file",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "<a href=\"http://jsonpatch.com/\" target=\"_blank\">JSON Patch</a> is a format for describing changes to a JSON document",
+            "required": true,
+            "schema": {
+              "description": "<a href=\"http://jsonpatch.com/\" target=\"_blank\">JSON Patch</a> is a format for describing changes to a JSON document",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Operation"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "File"
+        ],
+        "summary": "Deletes a file along with metadata and content [Write]",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "fileId",
+            "description": "UUID of file",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{appId}/files/{fileId}/auth": {
+      "get": {
+        "tags": [
+          "File"
+        ],
+        "summary": "Retrieves a temp auth Url of files by file Id for upload / download [Read]",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "fileId",
+            "description": "UUID of file to upload/download, a new UUID should be created for uploading a new file",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "method",
+            "description": "The operation method: PUT for upload; GET for download",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "duration",
+            "description": "Valid duration of the temporary authorization (in seconds), default value is 14400 (4hours)",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "locationHint",
+            "description": "Preferred location of storage. Available locations: MDC, PDC, HDC, SFO and External.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "fileSize",
+            "description": "The max size of single file, it would returns multiple urls of chuncks if the max size is\r\nbigger than 1GB due to the limit of object storage. please input byte in this filed.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "segmentSize",
+            "description": "The max size of each segment, it is 1073741824 (1GB) by default. It should be 5242880 (5MB) at least and \r\nless than 2147483648 (2GB). The total number of segments should be less than 1000. Set the segment size bigger for large file.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "fileName",
+            "description": "Overrides the default file name",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "inline",
+            "description": "True : Set Content-Disposition header as inline when downloading zip. False : Set Content-Disposition header as attachment.",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/TempAuthUrlDTO"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{appId}/files/auth": {
+      "post": {
+        "tags": [
+          "File"
+        ],
+        "summary": "Retrieves temp auth Url list for multiple files [Read]",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "method",
+            "description": "The operation method: PUT for upload; GET for download",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "duration",
+            "description": "Valid duration of the temporary authorization (in seconds), default value is 4hours",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "locationHint",
+            "description": "Preferred location of storage. Available locations: MDC, PDC, HDC, SFO and External.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "fileSize",
+            "description": "The max size of single file, it would returns multiple urls of chuncks if the max size is\r\nbigger than 1GB due to the limit of object storage. please input byte in this filed.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "segmentSize",
+            "description": "The max size of each segment, it is 1073741824 (1GB) by default. It should be 5242880 (5MB) at least and \r\nless than 2147483648 (2GB). The total number of segments should be less than 1000. Set the sigment size bigger for large file.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "inline",
+            "description": "True : Set Content-Disposition header as inline when downloading zip. False : Set Content-Disposition header as attachment.",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "File's id list in body",
+            "required": true,
+            "schema": {
+              "description": "File's id list in body",
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TempAuthUrlDTO"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{appId}/providers": {
+      "get": {
+        "tags": [
+          "Provider"
+        ],
+        "summary": "Get all application's providers [Admin]",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ProviderReadDTO"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{appId}/providers/health": {
+      "get": {
+        "tags": [
+          "Provider"
+        ],
+        "summary": "Get all application's providers health [Anonymous]",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ProvidersHealthDTO"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{appId}/providers/{providerId}": {
+      "get": {
+        "tags": [
+          "Provider"
+        ],
+        "summary": "Get provider by id [Admin]",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "providerId",
+            "description": "UUID of provider",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ProviderReadDTO"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Provider"
+        ],
+        "summary": "Create provider [Admin]",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "providerId",
+            "description": "UUID of provider",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Provider object to be created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProviderCreateDTO"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ProviderReadDTO"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Provider"
+        ],
+        "summary": "Full update provider [Admin]",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "providerId",
+            "description": "UUID of provider",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Provider object to be updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProviderUpdateDTO"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Provider"
+        ],
+        "summary": "Partial update provider [Admin]",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "providerId",
+            "description": "UUID of provider",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "<a href=\"http://jsonpatch.com/\" target=\"_blank\">JSON Patch</a> is a format for describing changes to a JSON document",
+            "required": true,
+            "schema": {
+              "description": "<a href=\"http://jsonpatch.com/\" target=\"_blank\">JSON Patch</a> is a format for describing changes to a JSON document",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Operation"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Provider"
+        ],
+        "summary": "Delete provider [Admin]",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "providerId",
+            "description": "UUID of provider",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{appId}/rules": {
+      "get": {
+        "tags": [
+          "Rule"
+        ],
+        "summary": "Gets relocation rules [Admin]",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RuleReadDTO"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{appId}/rules/{ruleId}": {
+      "get": {
+        "tags": [
+          "Rule"
+        ],
+        "summary": "Get rule by ID [Admin]",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "ruleId",
+            "description": "UUID of rule",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RuleReadDTO"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Rule"
+        ],
+        "summary": "Create new rule [Admin]",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "ruleId",
+            "description": "UUID of rule",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Rule object to be created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RuleCreateDTO"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RuleReadDTO"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Rule"
+        ],
+        "summary": "Full update rule [Admin]",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "ruleId",
+            "description": "UUID of rule",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Rule object to be updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RuleUpdateDTO"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Rule"
+        ],
+        "summary": "Partial update rule [Admin]",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "ruleId",
+            "description": "UUID of rule",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "<a href=\"http://jsonpatch.com/\" target=\"_blank\">JSON Patch</a> is a format for describing changes to a JSON document",
+            "required": true,
+            "schema": {
+              "description": "<a href=\"http://jsonpatch.com/\" target=\"_blank\">JSON Patch</a> is a format for describing changes to a JSON document",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Operation"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{appId}/rules/{ruleId}/activate": {
+      "post": {
+        "tags": [
+          "Rule"
+        ],
+        "summary": "Activate rule [Admin]",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "ruleId",
+            "description": "UUID of rule",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{appId}/rules/{ruleId}/deactivate": {
+      "post": {
+        "tags": [
+          "Rule"
+        ],
+        "summary": "Deactivate rule [Admin]",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "ruleId",
+            "description": "UUID of rule",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/apps/{appId}/rules/relocation": {
+      "post": {
+        "tags": [
+          "Rule"
+        ],
+        "summary": "Trigger relocation task for all existing files to apply rule changes [Admin]",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "description": "Tenant (App ID)",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/utilities/locations": {
+      "get": {
+        "tags": [
+          "Utility"
+        ],
+        "summary": "Get all locations of storage api [Anonymous]",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/utilities/locations/current": {
+      "get": {
+        "tags": [
+          "Utility"
+        ],
+        "summary": "Get current location [Anonymous]",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Correlation-ID",
+            "description": "Extra transaction information for debugging",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "TokenObject": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "idToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "FileCryptographyReadDto": {
+      "type": "object",
+      "properties": {
+        "encryptFileContent": {
+          "type": "boolean"
+        },
+        "fileEncryptionKey": {
+          "type": "string"
+        }
+      }
+    },
+    "ApplicationReadDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "webhookUrl": {
+          "type": "string"
+        },
+        "notificationEmail": {
+          "type": "string"
+        },
+        "allowedOrigins": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "disableExternalAccess": {
+          "type": "boolean"
+        },
+        "enableAdvancedSearch": {
+          "type": "boolean"
+        },
+        "cryptography": {
+          "$ref": "#/definitions/FileCryptographyReadDto"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "creationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedBy": {
+          "type": "string"
+        },
+        "modificationDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "FileCryptographyCreateDto": {
+      "type": "object",
+      "properties": {
+        "encryptFileContent": {
+          "type": "boolean"
+        },
+        "fileEncryptionKey": {
+          "type": "string"
+        }
+      }
+    },
+    "ApplicationCreateDTO": {
+      "required": [
+        "name"
+      ],
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "webhookUrl": {
+          "type": "string"
+        },
+        "notificationEmail": {
+          "type": "string"
+        },
+        "allowedOrigins": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "disableExternalAccess": {
+          "type": "boolean"
+        },
+        "enableAdvancedSearch": {
+          "type": "boolean"
+        },
+        "cryptography": {
+          "$ref": "#/definitions/FileCryptographyCreateDto"
+        }
+      },
+      "example": {"name":"NewApp","description":"NewApp description","disableExternalAccess":true,"enableAdvancedSearch":false,"allowedOrigins":[]}
+    },
+    "ApplicationUpdateDTO": {
+      "required": [
+        "name"
+      ],
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "webhookUrl": {
+          "type": "string"
+        },
+        "notificationEmail": {
+          "type": "string"
+        },
+        "allowedOrigins": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "disableExternalAccess": {
+          "type": "boolean"
+        },
+        "enableAdvancedSearch": {
+          "type": "boolean"
+        }
+      }
+    },
+    "OperationType": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "type": "integer"
+    },
+    "Operation": {
+      "type": "object",
+      "properties": {
+        "operationType": {
+          "$ref": "#/definitions/OperationType"
+        },
+        "path": {
+          "type": "string"
+        },
+        "op": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "value": { }
+      },
+      "example": {"op":"replace","path":"/field","value":"new value"}
+    },
+    "CompressionLevel": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "type": "integer"
+    },
+    "ZipRequestHttpInputDTO": {
+      "type": "object",
+      "properties": {
+        "fileUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "ZipRequestDamInputDTO": {
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "ZipRequestInputDTO": {
+      "type": "object",
+      "properties": {
+        "http": {
+          "$ref": "#/definitions/ZipRequestHttpInputDTO"
+        },
+        "dam": {
+          "$ref": "#/definitions/ZipRequestDamInputDTO"
+        }
+      }
+    },
+    "ZipRequestOutputDTO": {
+      "type": "object",
+      "properties": {
+        "filePath": {
+          "type": "string"
+        }
+      }
+    },
+    "ZipRequestItemDTO": {
+      "type": "object",
+      "properties": {
+        "input": {
+          "$ref": "#/definitions/ZipRequestInputDTO"
+        },
+        "output": {
+          "$ref": "#/definitions/ZipRequestOutputDTO"
+        }
+      },
+      "example": {"input":{"http":{"fileUrl":"external url"},"dam":{"fileId":"00000000-0000-0000-0000-000000000000"}},"output":{"filePath":"folder/sub folder/filename.docx"}}
+    },
+    "KeyValue": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "ProviderType": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "type": "integer"
+    },
+    "Locations": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "type": "integer"
+    },
+    "ShardingStrategy": {
+      "format": "int32",
+      "enum": [
+        0,
+        4,
+        8,
+        16
+      ],
+      "type": "integer"
+    },
+    "ProviderReadWithPasswordDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/ProviderType"
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Locations"
+          }
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KeyValue"
+          }
+        },
+        "tenantName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "creationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedBy": {
+          "type": "string"
+        },
+        "modificationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "sharding": {
+          "$ref": "#/definitions/ShardingStrategy"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "ContainerDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "creationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedBy": {
+          "type": "string"
+        },
+        "modificationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "ruleName": {
+          "type": "string",
+          "readOnly": true
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "provider": {
+          "$ref": "#/definitions/ProviderReadWithPasswordDTO"
+        },
+        "providerId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "FileStatus": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "type": "integer"
+    },
+    "FileMetadataReadDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "size": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "customMetadata": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KeyValue"
+          }
+        },
+        "containers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ContainerDTO"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/FileStatus"
+        },
+        "contentType": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "isLocked": {
+          "type": "boolean"
+        },
+        "eTag": {
+          "type": "string"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "creationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedBy": {
+          "type": "string"
+        },
+        "modificationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "urls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "extension": {
+          "type": "string"
+        },
+        "documentContent": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": { }
+        },
+        "isUploaded": {
+          "type": "boolean",
+          "readOnly": true
+        }
+      }
+    },
+    "FileMetadataCreateDTO": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "customMetadata": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KeyValue"
+          }
+        },
+        "size": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "contentType": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/FileStatus"
+        },
+        "urls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "extension": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": { }
+        }
+      },
+      "example": {"name":"test.docx","size":1000,"customMetadata":[{"key":"Key 1","value":"Val 1"}]}
+    },
+    "FileMetadataUpdateDTO": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "customMetadata": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KeyValue"
+          }
+        },
+        "size": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "contentType": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/FileStatus"
+        },
+        "urls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "extension": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": { }
+        }
+      },
+      "example": {"name":"test.docx","size":1000,"customMetadata":[{"key":"Key 1","value":"Val 1"}],"status":"Uploaded"}
+    },
+    "TempAuthUrlDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "url": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ProviderReadDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/ProviderType"
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Locations"
+          }
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KeyValue"
+          }
+        },
+        "tenantName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "creationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedBy": {
+          "type": "string"
+        },
+        "modificationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "sharding": {
+          "$ref": "#/definitions/ShardingStrategy"
+        }
+      }
+    },
+    "HealthStatus": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "type": "integer"
+    },
+    "ProviderHealthDTO": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/HealthStatus"
+        },
+        "statusMessage": {
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/ProviderType"
+        },
+        "online": {
+          "type": "boolean"
+        },
+        "quota": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "totalSpace": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "usedSpace": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "freeSpace": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "usedSpacePercentage": {
+          "format": "double",
+          "type": "number",
+          "readOnly": true
+        },
+        "freeSpacePercentage": {
+          "format": "double",
+          "type": "number",
+          "readOnly": true
+        },
+        "canRead": {
+          "type": "boolean"
+        },
+        "canWrite": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProvidersHealthDTO": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/HealthStatus"
+        },
+        "statusMessage": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "providers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProviderHealthDTO"
+          }
+        }
+      }
+    },
+    "ProviderCreateDTO": {
+      "required": [
+        "name",
+        "password",
+        "tenantName",
+        "username"
+      ],
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/ProviderType"
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Locations"
+          }
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KeyValue"
+          }
+        },
+        "tenantName": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "sharding": {
+          "$ref": "#/definitions/ShardingStrategy"
+        }
+      }
+    },
+    "ProviderUpdateDTO": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "RuleReadDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KeyValue"
+          }
+        },
+        "containers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ContainerDTO"
+          }
+        },
+        "storageProviders": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "creationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedBy": {
+          "type": "string"
+        },
+        "modificationDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "RuleCreateDTO": {
+      "required": [
+        "name"
+      ],
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KeyValue"
+          }
+        },
+        "storageProviders": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "RuleUpdateDTO": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KeyValue"
+          }
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\""
+    }
+  },
+  "tags": [
+    {
+      "name": "Access",
+      "description": "Get authentication token"
+    },
+    {
+      "name": "Application",
+      "description": "Configure application settings"
+    },
+    {
+      "name": "Compression",
+      "description": "Generate zip download URI"
+    },
+    {
+      "name": "File",
+      "description": "Manage files and get temporary url"
+    },
+    {
+      "name": "Provider",
+      "description": "Manage providers and get provider's health status and info"
+    },
+    {
+      "name": "Rule",
+      "description": "Manage rules"
+    },
+    {
+      "name": "Utility",
+      "description": "Provide helper functions"
+    }
+  ]
+}
