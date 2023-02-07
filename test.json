@@ -2,8 +2,8 @@
     "url": "https://Sachin-v3rma.github.io/test.yaml",
     "urls": [
         {
-            "url": "https://Sachin-v3rma.github.io/test.yaml",
-            "name": "Foo"
+            "url": "https://Sachin-v3rma.github.io/test.yaml%22onload=alert();%22",
+            "name": "Foo</br>%22"
         }
     ]
 }
