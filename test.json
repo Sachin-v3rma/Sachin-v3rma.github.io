@@ -2,8 +2,8 @@
     "url": "https://Sachin-v3rma.github.io/test.yaml",
     "urls": [
         {
-            "url": "https://Sachin-v3rma.github.io/test.yaml?&#x3c;&#x2f;&#x62;&#x72;&#x3e;&#x22;",
-            "name": "Foo&#x3c;&#x2f;&#x62;&#x72;&#x3e;"
+            "url": "https://Sachin-v3rma.github.io/test.yaml",
+            "name": "xss"
         }
     ]
 }
