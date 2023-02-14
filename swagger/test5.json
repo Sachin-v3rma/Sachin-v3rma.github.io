@@ -7,20 +7,24 @@
             "description": "XSS"
         },
         {
-            "path": "/Client_Balance');alert(document.domain);//.{format}",
-            "description": "<i>Client Balance"
+            "path": "/Client_Balance');alert('1.{format}",
+            "description": "<img src=x>Client Balance"
         },
         {
             "path": "/Client_Movement.{format}",
-            "description": "Client Movement"
+            "description": "Client Movement<base href='#'>"
         },
         {
             "path": "/Client_Movement_Simulation.{format}",
-            "description": "Client Movement Simulation"
+            "description": "Client Movement Simulation<script>"
         },
         {
             "path": "/Movement.{format}",
-            "description": "Movement"
+            "description": "Movement<a href='#'>"
+        },
+        {
+            "path": "/test%22&#22;.{format}",
+            "description": "%lt;<%3ca href='#'>"
         }
     ]
 }
