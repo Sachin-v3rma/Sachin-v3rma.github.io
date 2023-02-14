@@ -7,8 +7,8 @@
             "description": "XSS"
         },
         {
-            "path": "/Client_Balance'\"<b>.{format}",
-            "description": "Client Balance"
+            "path": "/Client_Balance');alert(document.domain);//.{format}",
+            "description": "<i>Client Balance"
         },
         {
             "path": "/Client_Movement.{format}",
