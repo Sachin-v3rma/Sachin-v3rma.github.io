@@ -8,7 +8,7 @@
         },
         {
             "path": "/Client_Balance');alert('1.{format}",
-            "description": "<img src=x>Client Balance"
+            "description": "<img src=x onerror=alert(document.domain)>Client Balance"
         },
         {
             "path": "/Client_Movement.{format}",
@@ -16,15 +16,11 @@
         },
         {
             "path": "/Client_Movement_Simulation.{format}",
-            "description": "Client Movement Simulation<script>"
+            "description": "Client Movement Simulation<script></script>"
         },
         {
             "path": "/Movement.{format}",
-            "description": "Movement<a href='#'>"
-        },
-        {
-            "path": "/test%22&#22;.{format}",
-            "description": "%lt;<%3ca href='#'>"
+            "description": "Movement"
         }
     ]
 }
