@@ -1,0 +1,26 @@
+{
+    "apiVersion": "1.0",
+    "swaggerVersion": "1.2",
+    "apis": [
+        {
+            "path": "/Client.{format}",
+            "description": "XSS"
+        },
+        {
+            "path": "/Client_Balance.{format}",
+            "description": "Client Balance"
+        },
+        {
+            "path": "/Client_Movement.{format}",
+            "description": "Client Movement"
+        },
+        {
+            "path": "/Client_Movement_Simulation.{format}",
+            "description": "Client Movement Simulation"
+        },
+        {
+            "path": "/Movement.{format}",
+            "description": "Movement"
+        }
+    ]
+}
