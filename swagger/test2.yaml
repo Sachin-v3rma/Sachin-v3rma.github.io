@@ -6,7 +6,7 @@ info:
 
   termsOfService: "javascript:prompt()"
   version: production
-basePath: /JSSResource/
+basePath: /
 produces:
   - application/xml
   - application/json
@@ -29,7 +29,7 @@ paths:
         - accounts
       operationId: findAccounts
       summary: Finds all accounts
-  '/accounts/groupid/{id}':
+  '/':
     delete:
       parameters:
         - description: |
@@ -57,7 +57,7 @@ paths:
           description: No response was specified
       tags:
         - accounts
-      operationId: findGroupsById
+      operationId: /xss.html\"><img>
       summary: Finds groups by id
     post:
       parameters:
