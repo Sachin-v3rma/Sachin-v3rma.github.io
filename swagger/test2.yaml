@@ -10,6 +10,7 @@ basePath: /JSSResource/
 produces:
   - application/xml
   - application/json
+  - <img>XSS<p>
 consumes:
   - application/xml
   - application/json
