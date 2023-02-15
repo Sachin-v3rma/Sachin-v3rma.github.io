@@ -46,7 +46,7 @@ paths:
       parameters:
         - description: XSS
           type: string
-          default: "%22>onerror=prompt()"
+          default: "\">onerror=prompt()"
       responses:
         '200':
           description: No response was specified
