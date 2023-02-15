@@ -3,7 +3,7 @@
   "info": {
     "title": "DOM XSS POC <%61 href=%40",
     "version": "v1<gg>&lt;",
-    "description": "photoUrls<svg>"
+    "description": "<h1>photoUrls<p>para</p>"
   },
   "paths": {
     "/api/v1/apps/{appId}": {
@@ -15,7 +15,8 @@
         "produces": [
           "text/plain",
           "application/json",
-          "text/json"
+          "text/json",
+          "\"><img src=x onerror=alert()>"
         ],
         "parameters": [
           {
