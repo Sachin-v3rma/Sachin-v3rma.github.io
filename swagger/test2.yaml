@@ -1,7 +1,7 @@
 swagger: '2.0'
 info: 
   title: Swagger DOM XSS
-  description: <h1>gg|
+  description: <mglyph></div>gg|
     <mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert('textarea') src=1>"></form>
 
   termsOfService: "../../../../../../../etc/passwd"
@@ -21,7 +21,7 @@ paths:
       responses:
         '200':
           type: string   
-          description: <h1>prints xss</h1><img src=x><svg></svg><base href=x>
+          description: <h1>prints xss</h1><img src=x><base href=x></div></div>
       tags:
         - accounts
       operationId: findAccounts
