@@ -20,7 +20,7 @@ paths:
       responses:
         '200':
           Type: string   
-          Description: prints xss   
+          description: prints xss   
           Default: <script>prompt('HAXX');</script>
       tags:
         - accounts
@@ -46,12 +46,9 @@ paths:
       summary: Deletes a group by id
     get:
       parameters:
-        - description: Id value to filter by
-          format: int64
-          in: path
-          name: id
-          required: true
-          type: integer
+        - description: XSS
+          type: string
+          default: "<script>prompt();</script>"
       responses:
         '200':
           description: No response was specified
