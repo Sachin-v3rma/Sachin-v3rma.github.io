@@ -11,8 +11,8 @@ produces:
   - application/json
 consumes:
   - application/xml
-  - application/json
-  - \"><script>alert(1)</script>
+  - application/json\"onload=alert();//
+  - \"><img>
 security:
   - basicAuth: []
 paths:
