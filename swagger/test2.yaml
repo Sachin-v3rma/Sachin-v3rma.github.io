@@ -51,6 +51,7 @@ paths:
       parameters:
         - description: XSS<iframe>
           type: string
+          in: path
           default: \"><img src=x onerror=prompt()>
       responses:
         '200':
