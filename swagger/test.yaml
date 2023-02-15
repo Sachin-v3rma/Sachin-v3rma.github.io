@@ -9,6 +9,7 @@ basePath: /JSSResource/
 produces:
   - application/xml
   - application/json
+  - \"><img>
 consumes:
   - application/xml
   - application/json\"onload=alert();//
