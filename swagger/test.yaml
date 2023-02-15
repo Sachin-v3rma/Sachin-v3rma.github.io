@@ -12,8 +12,8 @@ produces:
   - \"><img>
 consumes:
   - application/xml
-  - application/json\"onload=alert();//
-  - \"><img>
+  - application/json\"%00gg
+  - %22<svg>
 security:
   - basicAuth: []
 paths:
