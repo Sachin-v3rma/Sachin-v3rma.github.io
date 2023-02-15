@@ -21,7 +21,7 @@ paths:
         '200':
           Type: string   
           Description: prints xss   
-          Default: <script>console.log(‘000000000000000000dad0000000000000000000');</script>
+          Default: <script>prompt('HAXX');</script>
       tags:
         - accounts
       operationId: findAccounts
