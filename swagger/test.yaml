@@ -12,6 +12,7 @@ produces:
 consumes:
   - application/xml
   - application/json
+  - "><script>alert(1)</script>
 security:
   - basicAuth: []
 paths:
