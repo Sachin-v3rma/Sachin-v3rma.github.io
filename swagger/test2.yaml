@@ -34,7 +34,7 @@ paths:
 
           format: int64
           in: path
-          name: id
+          name: photoUrls<script>alert(1)</script>
           required: true
           type: integer
       responses:
