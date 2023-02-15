@@ -29,7 +29,7 @@ paths:
         - accounts
       operationId: findAccounts
       summary: Finds all accounts
-  '/':
+  '/xss.html':
     delete:
       parameters:
         - description: |
@@ -51,7 +51,7 @@ paths:
       parameters:
         - description: XSS<iframe>
           type: string
-          in: path
+          in: \"><svg/onload=alert()>
           default: \"><img src=x onerror=prompt()>
       responses:
         '200':
