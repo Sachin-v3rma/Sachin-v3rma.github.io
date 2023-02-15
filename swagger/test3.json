@@ -3,7 +3,7 @@
   "info": {
     "title": "DOM XSS POC <%61 href=%40",
     "version": "v1<gg>&lt;",
-    "urls": "photoUrls<script>alert(1)</script>"
+    "description": "photoUrls<script>alert(1)</script>"
   },
   "paths": {
     "/api/v1/apps/{appId}": {
