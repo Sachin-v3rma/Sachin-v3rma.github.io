@@ -13,7 +13,7 @@ produces:
 consumes:
   - application/xml
   - application/json\"%00gg
-  - %22<svg>
+  - \%22<g>
 security:
   - basicAuth: []
 paths:
