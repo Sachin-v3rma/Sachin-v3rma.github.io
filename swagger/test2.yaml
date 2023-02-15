@@ -21,7 +21,7 @@ paths:
       responses:
         '200':
           Type: string   
-          description: <h1>prints xss<img src=x%20onerror=console.log("haxxed");>
+          description: <h1>prints xss<img src=x%20onerror=console.log("haxxed")>
       tags:
         - accounts
       operationId: findAccounts
