@@ -24,7 +24,7 @@ paths:
       responses:
         '200':
           type: string   
-          description: <h1>prints xss</h1><img src=x></p><h2>testxss<p></p></div><span><a href=x><video><>
+          description: <h1>prints xss</h1><img src=x></p><h2>testxss</h2><p></p></div><span><a href=x><video></a>
       tags:
         - accounts
       operationId: findAccounts
