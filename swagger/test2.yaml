@@ -20,7 +20,7 @@ paths:
       responses:
         '200':
           Type: string   
-          description: <h1>prints xss
+          description: <h1>prints xss<img src=x>
       tags:
         - accounts
       operationId: findAccounts
@@ -47,7 +47,7 @@ paths:
       parameters:
         - description: XSS
           type: string
-          default: "<script>prompt();</script>"
+          default: "\"onerror=prompt()"
       responses:
         '200':
           description: No response was specified
