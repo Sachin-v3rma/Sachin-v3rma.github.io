@@ -4,7 +4,7 @@ info:
   description: |
     <math><mtext><option><textarea><svg/onload=alert(1)>
     
-  termsOfService: "Java%00script:alert()"
+  termsOfService: "Javascript:alert()"
   version: production
 basePath: /JSSResource/
 produces:
@@ -3760,4 +3760,4 @@ paths:
           description: No response was specified
       tags:
         - mobiledeviceapplications
-      description: 'You can also PUT and DELETE using this resource URL. If multiple applications match,
+      description: 'You can also PUT and DELETE using this resource URL. If multiple applications match,'
