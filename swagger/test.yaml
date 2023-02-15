@@ -12,7 +12,7 @@ produces:
   - \"><img>
 consumes:
   - application/xml
-  - application/json\"%00gg
+  - application/json
   - \%22<g>
 security:
   - basicAuth: []
