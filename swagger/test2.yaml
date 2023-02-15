@@ -4,7 +4,7 @@ info:
   description: |
     <math><mtext><option><textarea><svg/onload=alert(1)>
     
-  termsOfService: "Javascript:alert()"
+  termsOfService: "Jav%09ascript:%00alert()"
   version: production
 basePath: /JSSResource/
 produces:
@@ -20,8 +20,8 @@ paths:
     get:
       responses:
         '200':
-          Type: string   
-          description: <h1>prints xss<img src=x%20onerror=console.log("haxxed")>
+          type: string   
+          description: <h1>prints xss<img onerror=confirm() src=x><svg/onload></h1>
       tags:
         - accounts
       operationId: findAccounts
