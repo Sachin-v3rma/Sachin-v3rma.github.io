@@ -24,7 +24,9 @@ paths:
       responses:
         '200':
           type: string   
-          description: <h1>prints xss</h1><img src=x></p><h2>testxss</h2><p></p></div><span><a href=x onclick=gg>CLICK ME</a></div></div></td></tr></tbody></table>
+          description: <h1>prints xss</h1>|
+            <img src=x></p><h2>testxss</h2><p></p></div><span><a href=x onclick=gg>CLICK ME</a></div></div></td></tr></tbody></table>
+
       tags:
         - accounts
       operationId: findAccounts
@@ -49,7 +51,9 @@ paths:
       summary: Deletes a group by id
     get:
       parameters:
-        - description: XSS<iframe>
+        - description: |
+          <math><mtext><option><FAKEFAKE><option></option><mglyph><svg><mtext><style><a title="</style><img src='#' onerror='alert(1)'>">
+
           type: string
           in: \">%0a%0d%0a<svg/onload=alert()>
           default: \"><img src=x onfocus=prompt()>
@@ -62,7 +66,9 @@ paths:
       summary: Finds groups by id
     post:
       parameters:
-        - description: Id value to filter by
+        - description: |
+          <form><math><mtext><option><FAKEFAKE><option></option><mglyph><svg><mtext><style><a title="</style><img src='#' onerror='alert(1)'>"></form>
+
           in: path
           name: id
           required: true
