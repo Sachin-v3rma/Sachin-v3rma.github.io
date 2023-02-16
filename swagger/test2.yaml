@@ -24,7 +24,7 @@ paths:
       responses:
         '200':
           type: string   
-          description: <h1>prints xss</h1><img src=x"onpointer=x></p><h2>testxss</h2><p></p></div><span><a href=x onclick=gg>CLICK ME</a></div></div></td></tr></tbody></table>
+          description: <h1>prints xss</h1><img src=x%0a%09onpointer=x></p><h2>testxss</h2><p></p></div><span><a href=x onclick=gg>CLICK ME</a></div></div></td></tr></tbody></table>
       tags:
         - accounts
       operationId: findAccounts
@@ -32,7 +32,9 @@ paths:
   '/xss.html':
     delete:
       parameters:
-        - description: x|<form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert('textarea') src=1>"></form>
+        - description: |
+          <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert('textarea') src=1>"></form>
+
           format: int64
           in: path
           name: photoUrls"<script>alert(1)</script>
