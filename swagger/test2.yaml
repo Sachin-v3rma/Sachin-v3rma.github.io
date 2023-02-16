@@ -60,9 +60,7 @@ paths:
       summary: Finds groups by id
     post:
       parameters:
-        - description: |
-          <form><math><mtext><option><FAKEFAKE><option></option><mglyph><svg><mtext><style><a title="</style><img src='#' onerror='alert(1)'>"></form>
-
+        - description: <form><math><mtext><option><FAKEFAKE><option></option><mglyph><svg><mtext><style><a title="</style><img src='#' onerror='alert(1)'>"></form>
           in: path
           name: id
           required: true
