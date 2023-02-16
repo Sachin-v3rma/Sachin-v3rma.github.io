@@ -19,7 +19,7 @@
         },
         {
             "description": "API GlassDevTesting External",
-            "url": "\\\";onload=alert('XSS');//"
+            "url": "\";onload=alert('XSS');//"
         },
         {
             "description": "API Products Portal",
@@ -27,7 +27,7 @@
         },
         {
             "description": "API Data GateWay",
-            "url": \"#\"><img src=M onerror=alert('XSS');>"
+            "url": "#\"><img src=M onerror=alert('XSS');>"
         }
     ],
     "paths" : {
