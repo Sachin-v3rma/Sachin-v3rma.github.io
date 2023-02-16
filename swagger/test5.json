@@ -3,24 +3,8 @@
     "swaggerVersion": "1.2",
     "apis": [
         {
-            "path": "/Client.{format}",
-            "description": "XSS"
-        },
-        {
             "path": "/Client_Balance');alert('1.{format}",
             "description": "<img src=x onerror=alert(document.domain)>Client Balance"
-        },
-        {
-            "path": "/Client_Movement.{format}",
-            "description": "Client Movement<base href='#'>"
-        },
-        {
-            "path": "/Client_Movement_Simulation.{format}",
-            "description": "Client Movement Simulation<script></script>"
-        },
-        {
-            "path": "/Movement.{format}",
-            "description": "Movement"
         }
     ]
 }
