@@ -24,7 +24,7 @@ paths:
       responses:
         '200':
           type: string   
-          description: <h1>prints xss</h1><img src=x%0a onpointer=x></p><h2>testxss</h2><p></p></div><span><a href=x onclick=gg>CLICK ME</a></div></div></td></tr></tbody></table>
+          description: <h1>prints xss</h1><img src=x%0a onpointer=x></p><h2>testxss</h2><p></p></div><span><a href='https://sachin-v3rma.github.io' onclick=gg>CLICK ME</a></div></div></td></tr></tbody></table>
       tags:
         - accounts
       operationId: findAccounts
