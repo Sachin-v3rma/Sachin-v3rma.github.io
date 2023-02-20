@@ -49,7 +49,7 @@ paths:
       summary: Deletes a group by id
     get:
       parameters:
-        - description: <math><mtext><option><FAKEFAKE><option></option><mglyph><svg><mtext><style><a title="</style><img src='#' onerror='alert(1)'>">
+        - description: <a 
           type: string
           in: \">%0a%0d%0a<svg/onload=alert()>
           default: \"><img src=x onfocus=prompt()>
@@ -65,7 +65,7 @@ paths:
         - description: gg
           in: path
           name: id
-          required: true
+          required: true" onload=alert()
           type: string
       responses:
         '200':
