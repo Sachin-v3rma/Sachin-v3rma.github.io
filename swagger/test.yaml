@@ -1,14 +1,14 @@
 swagger: '2.0'
 info:
-  title: Example yaml.spec
+  title: Example2 yaml.spec
   description: |
-    <math><mtext><option><FAKEFAKE><option></option><mglyph><svg><mtext><textarea><a title="</textarea><img src='#' onerror='alert(window.origin)'>">
+    <math><mtext><option><mglyph><fieldset><textarea>&lt;/textarea&gt;&lt;img src=x onerror=alert(1)&gt;
 paths:
   /accounts:
     get:
       responses:
         '200':
-          description: No response was specified
+          description: No response was specified//<math><mtext><option><FAKEFAKE><option></option><mglyph><svg><mtext><textarea><a title="</textarea><img src='#' onerror='alert(window.origin)'>">
       tags:
         - accounts
       operationId: findAccounts
